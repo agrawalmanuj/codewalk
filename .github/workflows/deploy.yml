@@ -1,4 +1,4 @@
-name: Deploy Code Explainer
+name: Deploy Codewalk
 
 on:
   push:
@@ -26,9 +26,9 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::REPLACE_ACCOUNT_ID:role/codeexplain-github-deploy
+          role-to-assume: arn:aws:iam::308670323544:role/codewalk-github-deploy
           aws-region: ap-south-1
 
-      - run: aws s3 sync dist/ s3://REPLACE_BUCKET_NAME/ --delete
+      - run: aws s3 sync dist/ s3://manujagrawal-codewalk-2026/ --delete
 
-      - run: aws cloudfront create-invalidation --distribution-id REPLACE_DISTRIBUTION_ID --paths "/*"
+      - run: aws cloudfront create-invalidation --distribution-id E2RQGS35ZTK9NC --paths "/*"
